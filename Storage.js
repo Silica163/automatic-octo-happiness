@@ -47,9 +47,10 @@ class Storage{
         this._saveStorage();
     }
     clear() {
+        var thisvalue = Object.entries(this);
         fs.writeFileSync(this._filename,'{}');
         this._openStorage();
-        return null;
+        return thisvalue;
     }
     key(index) {
         if (typeof index == "undefined") {
