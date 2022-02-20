@@ -47,16 +47,16 @@ class Storage{
         this._saveStorage();
     }
     clear() {
-        var thisvalue = Object.entries(this);
+        var thisvalue = Object.keys(this);
+
         if(thisvalue.indexOf('_filename')!=-1){
             delete thisvalue[thisvalue.indexOf('_filename')]
-        }else{
-            for (const id in thisvalue) {
-                delete this[id];
-                console.log(id,this[id],this);
-            }
+        }else{}
+
+        for (const id of thisvalue) {
+            delete this[id];
         }
-        //fs.writeFileSync(this._filename,'{}');
+
         this._saveStorage();
         this._openStorage();
         return null;
