@@ -48,9 +48,18 @@ class Storage{
     }
     clear() {
         var thisvalue = Object.entries(this);
-        fs.writeFileSync(this._filename,'{}');
+        if(thisvalue.indexOf('_filename')!=-1){
+            delete thisvalue[thisvalue.indexOf('_filename')]
+        }else{
+            for (const id in thisvalue) {
+                delete this[id];
+                console.log(id,this[id],this);
+            }
+        }
+        //fs.writeFileSync(this._filename,'{}');
+        this._saveStorage();
         this._openStorage();
-        return thisvalue;
+        return null;
     }
     key(index) {
         if (typeof index == "undefined") {
