@@ -11,6 +11,7 @@ class Storage{
         }else{
             this._openStorage();
         }
+        return this;
         
     }
     _openStorage(){
